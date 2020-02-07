@@ -1,0 +1,12 @@
+<?php
+/*  Program: 
+    Author: Gatien Jayme
+    Date: 07.02.2020
+    Version: 
+*/
+
+$user = 'Dupont';
+$password = 'Dupont';
+$dbhost = 'local';
+$dbname = 'DupontB';
+?>
