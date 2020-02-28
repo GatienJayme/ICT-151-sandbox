@@ -9,7 +9,10 @@ require ("crud.php");
 
 function testCreate() {
     echo"Test Create fonctionne t-il ?";
-    
+    if($filmMakers['firstname'] == 'Joe') {
+        ['firstname' = 'Joe',
+            'lastname' = 'Dalton'];
+    }
     echo"Test Create: OK \n";
 }
 
