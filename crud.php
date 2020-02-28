@@ -32,10 +32,8 @@ function createFilmMaker($filmMaker)
 {
     try {
         $dbh = getPDO();
-        $query = 'SELECT * FROM filmmakers
-INSERT INTO filmmakers (id, filmmakersnumber, lastname, firstname, birthname, nationality)
-VALUES (4, 424, \'Luc-Franky\', \'Bernard\', \'1976-01-12\', \'Asiatique\')
-SELECT * FROM filmmakers';
+        $query = 'INSERT INTO filmmakers (filmmakersnumber, lastname, firstname, birthname, nationality)
+                    VALUES (:filmmakersnumber, :lastname, :firstname, :birthname, :nationality)';
         $statement = $dbh->prepare($query); // prepare query
         $statement->execute(); // execute query
         $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC); // prepare result for client
@@ -50,7 +48,18 @@ SELECT * FROM filmmakers';
 //
 function getFilmMaker($id)
 {
-
+    try {
+        $dbh = getPDO();
+        $query = 'SELECT * FROM filmmakers WHERE id=:id';
+        $statement = $dbh->prepare($query); // prepare query
+        $statement->execute(['id' => $id]); // execute query
+        $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC); // prepare result for client
+        $dbh = null;
+        return $queryResult;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        return null;
+    }
 }
 
 //
@@ -62,7 +71,18 @@ function getFilmMakers()
 //
 function getFilmMakerByName($name)
 {
-
+    try {
+        $dbh = getPDO();
+        $query = 'Select * from WHERE lastname =:name';
+        $statement = $dbh->prepare($query); // prepare query
+        $statement->execute(['lastname' => $name]); // execute query
+        $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC); // prepare result for client
+        $dbh = null;
+        return $queryResult;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        return null;
+    }
 }
 
 // Permet de modifier un film identifier par filmMaker
@@ -91,9 +111,8 @@ function deleteFilmMaker($id)
 {
     try {
         $dbh = getPDO();
-        $query = 'SELECT * FROM filmmakers 
-                DELETE FROM filmmakers 
-                WHERE id = 4;';
+        $query = 'DELETE FROM filmmakers
+                    WHERE id = :id';
         $statement = $dbh->prepare($query); // prepare query
         $statement->execute(); // execute query
         $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC); // prepare result for client

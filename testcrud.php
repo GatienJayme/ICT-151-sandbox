@@ -8,22 +8,30 @@
 require ("crud.php");
 
 function testCreate() {
-    echo"Test Create: OK";
+    echo"Test Create fonctionne t-il ?";
+    
+    echo"Test Create: OK \n";
 }
 
 function testGetAll() {
-    echo"Test GetAll: OK";
+    echo"Test GetAll: OK \n";
 }
 
 function testGetOne() {
-    echo"Test GetOne: OK";
+    echo"Test GetOne: OK \n";
 }
 
 function testUpdate() {
-    echo"Test Update: OK";
+    echo"Test Update: OK \n";
 }
 
 function testDelete() {
-    echo"Test Delete: OK";
+    echo"Test Delete: OK \n";
 }
+
+testCreate();
+testGetAll();
+testGetOne();
+testUpdate();
+testDelete();
 ?>
