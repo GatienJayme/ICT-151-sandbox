@@ -8,7 +8,7 @@
 require ("crud.php");
 
 function testCreate() {
-    echo"Test Create fonctionne t-il ?";
+    echo"Test Create :";
     if($filmMakers['firstname'] == 'Joe') {
         ['firstname' = 'Joe',
             'lastname' = 'Dalton'];
